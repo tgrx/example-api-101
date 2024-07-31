@@ -1,0 +1,12 @@
+{
+    "extensions.verifySignature": false,
+    "json.schemaDownload.enable": true,
+    "python.analysis.autoSearchPaths": false,
+    "python.analysis.extraPaths": [],
+    "python.autoComplete.extraPaths": [],
+    "python.defaultInterpreterPath": "venv/bin/python",
+    "python.languageServer": "Pylance",
+    "python.terminal.activateEnvironment": true,
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": false
+}

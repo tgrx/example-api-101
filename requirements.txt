@@ -1,0 +1,11 @@
+attrs==23.2.0
+autoflake==2.3.1
+devtools[pygments]==0.12.2
+django-stubs[compatible-mypy]==5.0.4
+Django==5.0.7
+httpie==3.2.3
+ipython==8.26.0
+isort==5.13.2
+orjson==3.10.6
+pydantic==2.8.2
+ruff==0.5.5

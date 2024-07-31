@@ -1,0 +1,81 @@
+version: '3'
+
+output: 'prefixed'
+
+
+tasks:
+
+  check:
+    aliases:
+      - c
+    cmds:
+      - ruff check .
+      - isort --check-only --virtual-env=./venv/ --settings-path=./pyproject.toml ./
+      - mypy .
+    desc: check code
+    dir: "{{.ROOT_DIR}}"
+    interactive: true
+    run: once
+
+  format:
+    aliases:
+      - f
+    cmds:
+      - >
+        autoflake
+        --exclude venv,.venv
+        --expand-star-imports
+        --in-place
+        --recursive
+        --remove-all-unused-imports
+        --remove-duplicate-keys
+        --remove-unused-variables
+        --verbose
+        ./
+      - isort --virtual-env=./venv/ --settings-path=./pyproject.toml ./
+      - ruff format
+    desc: format code
+    dir: "{{.ROOT_DIR}}"
+    interactive: true
+    run: once
+
+  makemigrations:
+    aliases:
+      - mm
+    cmds:
+      - python manage.py makemigrations
+      - task: format
+    desc: make migrations
+    dir: "{{.ROOT_DIR}}"
+    interactive: true
+    run: once
+
+  migrate:
+    aliases:
+      - m
+    cmds:
+      - python manage.py migrate
+    desc: migrate DB
+    dir: "{{.ROOT_DIR}}"
+    interactive: true
+    run: once
+
+  run-api:
+    aliases:
+      - a
+    cmds:
+      - python manage.py runserver
+    desc: run API server
+    dir: "{{.ROOT_DIR}}"
+    interactive: true
+    run: once
+
+  test:
+    aliases:
+      - t
+    cmds:
+      - python manage.py test
+    desc: run tests
+    dir: "{{.ROOT_DIR}}"
+    interactive: true
+    run: once
